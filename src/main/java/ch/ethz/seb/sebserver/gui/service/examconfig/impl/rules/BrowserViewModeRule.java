@@ -49,10 +49,13 @@ public class BrowserViewModeRule implements ValueChangeRule {
             return;
         }
 
+        context.setValue(KEY_TOUCH_EXIT, "false");
+
         try {
             if (KEY_TOUCH_OPTIMIZED.equals(attribute.name)) {
                 if (BooleanUtils.toBoolean(value.value)) {
                     context.setValue(KEY_BROWSER_VIEW_MODE, "2");
+                    context.setValue(KEY_TOUCH_EXIT, "true");
                     context.disableGroup(KEY_MAIN_WINDOW_GROUP);
                 } else {
                     if (context.getValue(KEY_BROWSER_VIEW_MODE) == null) {
